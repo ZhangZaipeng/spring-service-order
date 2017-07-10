@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @FeignClient(value = "spring-service-user")
 public interface SchedualServiceUser {
 
-    @RequestMapping(value = "/hi",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/hi",method = RequestMethod.GET)
     String sayHiFromClientOne();
 }

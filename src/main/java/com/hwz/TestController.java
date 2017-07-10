@@ -29,7 +29,7 @@ public class TestController {
 
     @RequestMapping("/use_ribbon_say_hi")
     public String home() {
-        String res = restTemplate.getForObject("http://SPRING-SERVICE-USER/hi",String.class);
+        String res = restTemplate.getForObject("http://SPRING-SERVICE-USER/user/hi",String.class);
         return "hi i am is:" + applicationName + ", i am from port:" +port + ", use_ribbon_say_hi --> " + res;
     }
 
