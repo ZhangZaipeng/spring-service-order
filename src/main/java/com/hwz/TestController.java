@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class TestController {
     @Autowired
-    private RestTemplate RestTemplate;
+    private RestTemplate restTemplate;
 
     @Value("${spring.application.name}")
     private String applicationName;
@@ -21,8 +21,17 @@ public class TestController {
     @Value("${server.port}")
     String port;
 
-    @RequestMapping("/hi")
+    @Autowired
+    private SchedualServiceUser schedualServiceUser;
+
+    @RequestMapping("/use_ribbon_say_hi")
     public String home() {
-        return "hi i am is:" + applicationName + ",i am from port:" +port;
+        String res = restTemplate.getForObject("http://SPRING-SERVICE-USER/hi",String.class);
+        return "hi i am is:" + applicationName + ", i am from port:" +port + ", use_ribbon_say_hi --> " + res;
+    }
+
+    @RequestMapping("/use_feign_say_hi")
+    public String home1() {
+        return "hi i am is:" + applicationName + ", i am from port:" +port + ", use_feign_say_hi --> " + schedualServiceUser.sayHiFromClientOne();
     }
 }
