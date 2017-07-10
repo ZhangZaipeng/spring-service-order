@@ -1,10 +1,10 @@
+spring:
+  profiles:
+    active: dev
+---
 server:
   port: 8764
-
-spring:
-  application:
-    name: spring-service-order
-
+  contextPath: /order
 eureka:
   client:
     serviceUrl:

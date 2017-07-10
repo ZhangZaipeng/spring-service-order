@@ -1,0 +1,18 @@
+# 应用名
+spring:
+  application:
+    name: spring-service-order
+
+# config 配置
+---
+spring:
+  profiles: docker
+  cloud:
+    config:
+      uri: http://config-service:9888
+---
+spring:
+  profiles: default
+  cloud:
+    config:
+      uri: http://139.199.209.16:9888
