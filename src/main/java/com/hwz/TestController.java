@@ -24,6 +24,9 @@ public class TestController {
     @Autowired
     private SchedualServiceUser schedualServiceUser;
 
+    @Value("${foo}")
+    String foo;
+
     @RequestMapping("/use_ribbon_say_hi")
     public String home() {
         String res = restTemplate.getForObject("http://SPRING-SERVICE-USER/hi",String.class);
@@ -33,5 +36,10 @@ public class TestController {
     @RequestMapping("/use_feign_say_hi")
     public String home1() {
         return "hi i am is:" + applicationName + ", i am from port:" +port + ", use_feign_say_hi --> " + schedualServiceUser.sayHiFromClientOne();
+    }
+
+    @RequestMapping("/foo")
+    public String foo() {
+        return foo;
     }
 }
